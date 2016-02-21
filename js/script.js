@@ -29,7 +29,6 @@ var flashTextTop = function () {
     
     clockFace.innerHTML = hrs + ":" + mins + ":" + sec
     // console.log([time])
-
 }
 
      clock.appendChild(clockFace)
@@ -42,8 +41,7 @@ var flashTextTop = function () {
 // hover function
 // ///////////////////////////////////////////////
 
-function initElement()  
-    {      	
+function initElement(){      	
     	var clockContainer = document.querySelector('.clockContainer')
         clockContainer.onmouseover = showMouseOver
         // clockclockContainer.onmouseout = showMouseOut;
@@ -58,7 +56,9 @@ function initElement()
 		// var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue("background-image");
 		var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue('background');
     	console.log(backGrndCont)
+    	clock.innerHTML = ["backGrndCont"]
         return backGrndCont
+
     }
     
     // function showMouseOut()
@@ -93,3 +93,4 @@ function initElement()
         }
     }
 }
+

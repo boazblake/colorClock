@@ -17,10 +17,11 @@ html {
 }
 
 .clockContainer {
+	width: 100%;
 	position: relative;
 	height: 100vh;
-	/*background-image:linear-gradient(45deg,#AA076B, #F09819);*/
-	background: #FFB347;
+	background-image:linear-gradient(45deg,#AA076B, #F09819);
+	/*background: #FFB347;*/
 
 }
 

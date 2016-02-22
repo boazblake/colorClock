@@ -8,9 +8,6 @@ var clockFace = document.createElement('div')
 
 clockFace.className += ' clockFace'
 
-
-
-
     //////////////////////////////////////////////
 // clock
 // ///////////////////////////////////////////////
@@ -36,6 +33,26 @@ var flashTextTop = function () {
 // blink function
 // ///////////////////////////////////////////////
  var intervalID = window.setInterval(flashTextTop, 1000);
+
+
+    //////////////////////////////////////////////
+    				// progress Bar
+    //////////////////////////////////////////////
+
+    function move() {
+    var pBar = document.querySelector(".progressBar"); 
+    // console.log(pBar)
+    var width = 0;
+    var id = setInterval(frame, 800);
+    function frame() {
+        if (width === 100) {
+            clearInterval(id);
+        } else {
+            width++; 
+            pBar.style.width = width + '%'; 
+        }
+    }
+}
 
     //////////////////////////////////////////////
 // hover function
@@ -66,23 +83,4 @@ var flashTextTop = function () {
 //         var notice = document.querySelector("notice");
 //         notice.innerHTML = 'mouse out detected';
 //     }
-
-    //////////////////////////////////////////////
-    				// progress Bar
-    //////////////////////////////////////////////
-
-    function move() {
-    var pBar = document.querySelector(".progressBar"); 
-    // console.log(pBar)
-    var width = 0;
-    var id = setInterval(frame, 1000);
-    function frame() {
-        if (width === 100) {
-            clearInterval(id);
-        } else {
-            width++; 
-            pBar.style.width = width + '%'; 
-        }
-    }
-}
 

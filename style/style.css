@@ -36,18 +36,22 @@ html {
 }
 
 .progressBarContainer {
-    width: 100%;
-    height: 30px;
-    position: relative;
+    position: absolute;
+    bottom: 40%;
+    left: 25%;
+    width: 50%;
+    height: 10px;
     background-color: grey;
+    border-radius: 10px;
 }
 .progressBar {
     width: 10px;
-    height: 30px;
+    height: 10px;
     position: absolute;
     background-color: green;
+    border-radius: 10px;
 }
 
-/*.clock:hover {
+.clock:hover {
 	background-image:linear-gradient(45deg,#DD2476, #F11712);
-}*/
+}

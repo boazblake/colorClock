@@ -41,39 +41,31 @@ var flashTextTop = function () {
 // hover function
 // ///////////////////////////////////////////////
 
-function initElement(){      	
-    	var clockContainer = document.querySelector('.clockContainer')
-        clockContainer.onmouseover = showMouseOver
-        // clockclockContainer.onmouseout = showMouseOut;
-		// var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue("background-image");
-		// console.log([backGrndCont])
-    }
+// function initElement(){      	
+//     	var clockContainer = document.querySelector('.clockContainer')
+//         clockContainer.onmouseover = showMouseOver
+//         // clockclockContainer.onmouseout = showMouseOut;
+// 		// var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue("background-image");
+// 		// console.log([backGrndCont])
+//     }
 
-    function showMouseOver()  
-    { 
-    	var clockContainer = document.querySelector('.clockContainer')
-    	// console.log([clockContainer])
-		// var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue("background-image");
-		var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue('background');
-    	console.log(backGrndCont)
-    	clock.innerHTML = ["backGrndCont"]
-        return backGrndCont
+//     function showMouseOver()  
+//     { 
+//     	var clockContainer = document.querySelector('.clockContainer')
+//     	// console.log([clockContainer])
+// 		// var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue("background-image");
+// 		var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue('background');
+//     	console.log(backGrndCont)
+//     	clock.innerHTML = [backGrndCont]
+//         return backGrndCont
 
-    }
+//     }
     
-    // function showMouseOut()
-    // {
-    //     var notice = document.querySelector("notice");
-    //     notice.innerHTML = 'mouse out detected';
-    // }
-
-
-
-
-
-
-
-
+//     function showMouseOut()
+//     {
+//         var notice = document.querySelector("notice");
+//         notice.innerHTML = 'mouse out detected';
+//     }
 
     //////////////////////////////////////////////
     				// progress Bar
@@ -83,7 +75,7 @@ function initElement(){
     var pBar = document.querySelector(".progressBar"); 
     // console.log(pBar)
     var width = 0;
-    var id = setInterval(frame, 600);
+    var id = setInterval(frame, 1000);
     function frame() {
         if (width === 100) {
             clearInterval(id);

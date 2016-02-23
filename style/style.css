@@ -26,6 +26,22 @@ body {
     position: relative;
     height: 100vh;
     background-image: radial-gradient(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.2));
+    /*background-image: -webkit-radial-gradient(80% 20%, closest-corner, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.2));*/
+    transition: 1s all ease;
+}
+
+.heart {
+    position: absolute;
+    width: 30%;
+    height: 40%;
+    background-image: radial-gradient(rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.8));
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 1s ease infinite;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    left: 50%;
+
 }
 
 .hexContainer {
@@ -78,4 +94,16 @@ body {
 
 .hexContainer:hover ~ .clock {
     opacity: 0;
+}
+
+@keyframes pulse {
+ 0% {
+ transform: scale(1.2, 1.2);
+}
+ 50% {
+ transform: scale(1.5, 1.5);
+}
+ 100% {
+transform: scale(1.2, 1.2);
+};
 }

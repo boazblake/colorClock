@@ -26,8 +26,8 @@ function timeToRGB(hrs,mins,sec) {
 // functions to call //
 ///////////////////////
 function setHexColorTime(rgbObject) {
-    var hexColor = rgbObject.red.toString(16) + ":" + rgbObject.green.toString(16) + ":" + rgbObject.blue.toString(16)
     var hexContain = document.querySelector('.hexContainer')
+    var hexColor = rgbObject.red.toString(16) + ":" + rgbObject.green.toString(16) + ":" + rgbObject.blue.toString(16)
     hexContain.textContent = hexColor
 }
 
@@ -49,6 +49,13 @@ function setProgressBarWidth(sec) {
     pBar.style.width = percentSec + "%";
 }
 
+function heartBeat(sec) {
+ 	var heart = document.querySelector(".heart");
+ 	console.log(heart.style.backgroundImage)
+
+}
+
+
 //////////////////////////////////////////
 function getTime() {
     var timeNow = new Date()
@@ -61,7 +68,8 @@ function getTime() {
 	setHexColorTime(rgbValues)
 	backgroundChange(rgbValues)
 	setClockTime(hours, minutes, seconds)
-	setProgressBarWidth(seconds)	
+	setProgressBarWidth(seconds)
+	heartBeat(seconds)
 }
 
 

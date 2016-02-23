@@ -31,7 +31,7 @@ body {
 .hexContainer {
     z-index: 1;
     position: absolute;
-    font-size: 5vh;
+    font-size: 15vh;
     color: white;
     display: inline-block;
     top: 50%;
@@ -44,7 +44,7 @@ body {
 .clock {
     z-index: 0;
     position: absolute;
-    font-size: 5vh;
+    font-size: 15vh;
     color: white;
     display: inline-block;
     top: 50%;

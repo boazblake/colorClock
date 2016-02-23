@@ -1,6 +1,4 @@
-var clockStamp = document.querySelector('.clockContainer')
-
-var clock = clockStamp.querySelector('.clock')
+var clock = document.querySelector('.clock')
 
 var clockFace = document.createElement('div')
 
@@ -11,8 +9,6 @@ clockFace.className += ' clockFace'
 ///////////
 
 clock.appendChild(clockFace)
-
-
 
 ///////////////////////
 // helper function //
@@ -40,12 +36,6 @@ function backgroundChange(rgbO){
     body.style.background = 'rgb(' + rgbO.red + ',' + rgbO.green + ',' + rgbO.blue +')'
 }
 
-function setProgressBarWidth(sec) {
-    var newSec = sec / 60 * 100
-    var pBar = document.querySelector(".progressBar");
-    pBar.style.width = newSec + "%";
-}
-
 function setClockTime(hrs,mins,sec) {
 	    hrs = ("0" + hrs).slice(-2);
 	    mins = ("0" + mins).slice(-2);
@@ -53,8 +43,14 @@ function setClockTime(hrs,mins,sec) {
 	    clockFace.innerHTML = hrs + ":" + mins + ":" + sec
 }
 
-function writeToDom() {
-    var clockFace = document.querySelector('.clock')
+function setProgressBarWidth(sec) {
+ 	var pBar = document.querySelector(".progressBar");
+    var percentSec = sec / 60 * 100
+    pBar.style.width = percentSec + "%";
+}
+
+//////////////////////////////////////////
+function getTime() {
     var timeNow = new Date()
     var hours = timeNow.getHours()
     var minutes = timeNow.getMinutes()
@@ -64,13 +60,14 @@ function writeToDom() {
 
 	setHexColorTime(rgbValues)
 	backgroundChange(rgbValues)
-	
-	setProgressBarWidth(seconds)
 	setClockTime(hours, minutes, seconds)
+	setProgressBarWidth(seconds)	
 }
+
+
 ////////////////////
 // Timer function //
 ////////////////////
 
 
-var intervalID = window.setInterval(writeToDom, 1000);
+var intervalID = window.setInterval(getTime, 1000);

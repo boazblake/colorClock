@@ -1,8 +1,6 @@
 var clockStamp = document.querySelector('.clockContainer')
-    // console.log(clockStamp)
 
 var clock = clockStamp.querySelector('.clock')
-    // console.log(clock)
 
 var clockFace = document.createElement('div')
 
@@ -12,142 +10,67 @@ clockFace.className += ' clockFace'
 // Clock //
 ///////////
 
-function flashTextTop() {
-    var clockFace = document.querySelector('.clock')
-    var timeNow = new Date()
-    var hrs = timeNow.getHours()
-    hrs = ("0" + hrs).slice(-2);
-
-    var mins = timeNow.getMinutes()
-    mins = ("0" + mins).slice(-2);
-
-    var sec = timeNow.getSeconds()
-    sec = ("0" + sec).slice(-2);
-
-    clockFace.innerHTML = hrs + ":" + mins + ":" + sec
-
-    ///////////////////
-    // setClockTime()  //
-    //////////////////////
-
-    ////////////////////
-    // setProgressWidth()  //
-    //////////////////////
-    var newSec = parseInt(sec) / 60 * 100
-
-    var pBar = document.querySelector(".progressBar");
-    // console.log([pBar])
-    pBar.style.width = newSec + "%";
-    // console.log([pBar.style.width])
-
-
-    ///////////////////////
-    // setHexColorTime()  HEX color stopwatch //
-    ///////////////////////
-
-    var red = Math.floor((255 * hrs) / 24)
-
-    var green = Math.floor((255 * mins) / 60)
-
-    var blue = Math.floor((255 * sec) / 60)
-
-
-    var hexColor = red.toString(16) + ":" + green.toString(16) + ":" + blue.toString(16)
-        // console.log([hexColor])
-
-
-    var hexContain = document.querySelector('.hexContainer')
-
-    hexContain.textContent = hexColor
-    console.log([hexColor])
-
-    ///////////////////
-    // setBackgroundColor() BACKGROUND CHANGE///
-    ///////////////////
-    
-
-    var body = document.querySelector('body')
-    body.style.background = 'rgb(' + red + ',' + green + ',' + blue + ')'
-
-}
-
 clock.appendChild(clockFace)
+
+
+
+///////////////////////
+// helper function //
+///////////////////////
+
+function timeToRGB(hrs,mins,sec) {
+	var objectRGB = {}
+	objectRGB.red = Math.floor((255 * hrs) / 24)
+	objectRGB.green = Math.floor((255 * mins) / 60)
+	objectRGB.blue = Math.floor((255 * sec) / 60)
+	return objectRGB
+}
 
 ///////////////////////
 // functions to call //
 ///////////////////////
-
-
-
-
-
-function writeToDom() {
-    // hr, min, sec
-
-    flashTextTop()
-    // backgroundChange()
-    // progressBarChange()
+function setHexColorTime(rgbObject) {
+    var hexColor = rgbObject.red.toString(16) + ":" + rgbObject.green.toString(16) + ":" + rgbObject.blue.toString(16)
+    var hexContain = document.querySelector('.hexContainer')
+    hexContain.textContent = hexColor
 }
 
+function backgroundChange(rgbO){
+    var body = document.querySelector('body')
+    body.style.background = 'rgb(' + rgbO.red + ',' + rgbO.green + ',' + rgbO.blue +')'
+}
 
+function setProgressBarWidth(sec) {
+    var newSec = sec / 60 * 100
+    var pBar = document.querySelector(".progressBar");
+    pBar.style.width = newSec + "%";
+}
+
+function setClockTime(hrs,mins,sec) {
+	    hrs = ("0" + hrs).slice(-2);
+	    mins = ("0" + mins).slice(-2);
+	    sec = ("0" + sec).slice(-2);
+	    clockFace.innerHTML = hrs + ":" + mins + ":" + sec
+}
+
+function writeToDom() {
+    var clockFace = document.querySelector('.clock')
+    var timeNow = new Date()
+    var hours = timeNow.getHours()
+    var minutes = timeNow.getMinutes()
+    var seconds = timeNow.getSeconds()
+
+    var rgbValues = timeToRGB(hours, minutes, seconds)
+
+	setHexColorTime(rgbValues)
+	backgroundChange(rgbValues)
+	
+	setProgressBarWidth(seconds)
+	setClockTime(hours, minutes, seconds)
+}
 ////////////////////
 // Timer function //
 ////////////////////
 
 
 var intervalID = window.setInterval(writeToDom, 1000);
-
-
-
-// defunct parts
-
-
-////////////////////
-// progressBar 	//
-////////////////////
-
-//     function move() {
-//     var pBar = document.querySelector(".progressBar"); 
-//     // console.log(pBar)
-//     var width = 0;
-//     var id = setInterval(frame, 800);
-//     function frame() {
-//         if (width === 100) {
-//             width = 0
-//         } else {
-//             width++; 
-//             pBar.style.width = width + '%';
-//         }
-//     }
-// }
-
-
-////////////////////
-//  Hover Function //
-////////////////////
-
-// function initElement(){      	
-//     	var clockContainer = document.querySelector('.clockContainer')
-//         clockContainer.onmouseover = showMouseOver
-//         // clockclockContainer.onmouseout = showMouseOut;
-// 		// var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue("background-image");
-// 		// console.log([backGrndCont])
-//     }
-
-//     function showMouseOver()  
-//     { 
-//     	var clockContainer = document.querySelector('.clockContainer')
-//     	// console.log([clockContainer])
-// 		// var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue("background-image");
-// 		var backGrndCont = window.getComputedStyle(clockContainer, null).getPropertyValue('background');
-//     	console.log(backGrndCont)
-//     	clock.innerHTML = [backGrndCont]
-//         return backGrndCont
-
-//     }
-
-//     function showMouseOut()
-//     {
-//         var notice = document.querySelector("notice");
-//         notice.innerHTML = 'mouse out detected';
-//     }
